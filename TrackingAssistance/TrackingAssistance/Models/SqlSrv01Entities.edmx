@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="backupLoads">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="probill_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="bol_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="leg" Type="int" />
+          <Property Name="is_brokered" Type="int" />
+          <Property Name="truck_nember" Type="nvarchar" MaxLength="50" />
+          <Property Name="lane_id" Type="int" />
+          <Property Name="entry_date" Type="datetime" />
+          <Property Name="delete_data" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FourKites_CustomerLane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerLane" Type="varchar" MaxLength="100" />
+          <Property Name="Customer" Type="varchar" MaxLength="30" />
+          <Property Name="PickLocation" Type="int" />
+          <Property Name="DelLocation" Type="int" />
+          <Property Name="TimeMin" Type="int" />
+          <Property Name="TimeMax" Type="int" />
+        </EntityType>
+        <EntityType Name="FourKites_GPS_Sequencer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerLaneId" Type="int" />
+          <Property Name="CustomerLane" Type="varchar" MaxLength="100" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="TimeOffset" Type="int" />
+          <Property Name="Lat" Type="varchar" MaxLength="15" />
+          <Property Name="Long" Type="varchar" MaxLength="15" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="FourKitesTrackingPendingLegs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="deliver_date" Type="datetime" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="entry_date" Type="datetime" Nullable="false" />
+          <Property Name="orignal_probill_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="leg" Type="int" />
+          <Property Name="bol_number" Type="varchar" MaxLength="100" />
+          <Property Name="billing_group" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="10" />
+          <Property Name="orignal_trip_number" Type="varchar" MaxLength="10" />
+          <Property Name="orignal_truck_number" Type="varchar" MaxLength="50" />
+          <Property Name="orignal_com_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_last_leg" Type="int" />
+          <Property Name="carrier_id" Type="int" />
+          <Property Name="assignment_id" Type="varchar" MaxLength="50" />
+          <Property Name="assignment_status" Type="varchar" MaxLength="50" />
+          <Property Name="assign_probill_number" Type="varchar" MaxLength="50" />
+          <Property Name="assign_trip_number" Type="varchar" MaxLength="50" />
+          <Property Name="assign_truck_number" Type="nchar" MaxLength="50" />
+          <Property Name="assign_com_type" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="FourkitesTrackingSentLegs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="probill_number" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="leg" Type="int" Nullable="false" />
+          <Property Name="bol_number" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="trip_number" Type="varchar" MaxLength="10" />
+          <Property Name="truck_number" Type="varchar" MaxLength="50" />
+          <Property Name="current_status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="entry_time" Type="datetime" Nullable="false" />
+          <Property Name="is_brockered" Type="tinyint" Nullable="false" />
+          <Property Name="is_last_leg" Type="int" Nullable="false" />
+          <Property Name="has_orignal_probill" Type="int" />
+          <Property Name="orignal_probill" Type="varchar" MaxLength="100" />
+          <Property Name="pickuplocation" Type="int" />
+          <Property Name="deliveredlocation" Type="int" />
+          <Property Name="lane_id" Type="int" />
+          <Property Name="pickedup_time" Type="datetime" />
+          <Property Name="pingposition" Type="int" />
+        </EntityType>
+        <EntityType Name="TrackingAssistanceUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TrackingBackup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entrydate" Type="datetime" />
+          <Property Name="probill" Type="nvarchar" MaxLength="50" />
+          <Property Name="path" Type="nvarchar" MaxLength="50" />
+          <Property Name="current_status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="backupLoads" EntityType="Self.backupLoads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FourKites_CustomerLane" EntityType="Self.FourKites_CustomerLane" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FourKites_GPS_Sequencer" EntityType="Self.FourKites_GPS_Sequencer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FourKitesTrackingPendingLegs" EntityType="Self.FourKitesTrackingPendingLegs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FourkitesTrackingSentLegs" EntityType="Self.FourkitesTrackingSentLegs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackingAssistanceUser" EntityType="Self.TrackingAssistanceUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackingBackup" EntityType="Self.TrackingBackup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TrackingBackup].[id] AS [id], 
+    [TrackingBackup].[entrydate] AS [entrydate], 
+    [TrackingBackup].[probill] AS [probill], 
+    [TrackingBackup].[path] AS [path], 
+    [TrackingBackup].[current_status] AS [current_status]
+    FROM [dbo].[TrackingBackup] AS [TrackingBackup]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="backupLoad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="probill_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bol_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="leg" Type="Int32" />
+          <Property Name="is_brokered" Type="Int32" />
+          <Property Name="truck_nember" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lane_id" Type="Int32" />
+          <Property Name="entry_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_data" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FourKites_CustomerLane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerLane" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Customer" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PickLocation" Type="Int32" />
+          <Property Name="DelLocation" Type="Int32" />
+          <Property Name="TimeMin" Type="Int32" />
+          <Property Name="TimeMax" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FourKites_GPS_Sequencer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerLaneId" Type="Int32" />
+          <Property Name="CustomerLane" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="TimeOffset" Type="Int32" />
+          <Property Name="Lat" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Long" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FourKitesTrackingPendingLeg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deliver_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="entry_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="orignal_probill_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="leg" Type="Int32" />
+          <Property Name="bol_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="billing_group" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="orignal_trip_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="orignal_truck_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orignal_com_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_last_leg" Type="Int32" />
+          <Property Name="carrier_id" Type="Int32" />
+          <Property Name="assignment_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="assignment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="assign_probill_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="assign_trip_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="assign_truck_number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="assign_com_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FourkitesTrackingSentLeg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="probill_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="leg" Type="Int32" Nullable="false" />
+          <Property Name="bol_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trip_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="truck_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="current_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entry_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_brockered" Type="Byte" Nullable="false" />
+          <Property Name="is_last_leg" Type="Int32" Nullable="false" />
+          <Property Name="has_orignal_probill" Type="Int32" />
+          <Property Name="orignal_probill" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pickuplocation" Type="Int32" />
+          <Property Name="deliveredlocation" Type="Int32" />
+          <Property Name="lane_id" Type="Int32" />
+          <Property Name="pickedup_time" Type="DateTime" Precision="3" />
+          <Property Name="pingposition" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TrackingAssistanceUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrackingBackup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entrydate" Type="DateTime" Precision="3" />
+          <Property Name="probill" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="current_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SqlSrv01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="backupLoads" EntityType="Self.backupLoad" />
+          <EntitySet Name="FourKites_CustomerLane" EntityType="Self.FourKites_CustomerLane" />
+          <EntitySet Name="FourKites_GPS_Sequencer" EntityType="Self.FourKites_GPS_Sequencer" />
+          <EntitySet Name="FourKitesTrackingPendingLegs" EntityType="Self.FourKitesTrackingPendingLeg" />
+          <EntitySet Name="FourkitesTrackingSentLegs" EntityType="Self.FourkitesTrackingSentLeg" />
+          <EntitySet Name="TrackingAssistanceUsers" EntityType="Self.TrackingAssistanceUser" />
+          <EntitySet Name="TrackingBackups" EntityType="Self.TrackingBackup" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SqlSrv01Entities">
+          <EntitySetMapping Name="backupLoads">
+            <EntityTypeMapping TypeName="Model.backupLoad">
+              <MappingFragment StoreEntitySet="backupLoads">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="probill_number" ColumnName="probill_number" />
+                <ScalarProperty Name="bol_number" ColumnName="bol_number" />
+                <ScalarProperty Name="leg" ColumnName="leg" />
+                <ScalarProperty Name="is_brokered" ColumnName="is_brokered" />
+                <ScalarProperty Name="truck_nember" ColumnName="truck_nember" />
+                <ScalarProperty Name="lane_id" ColumnName="lane_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="delete_data" ColumnName="delete_data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FourKites_CustomerLane">
+            <EntityTypeMapping TypeName="Model.FourKites_CustomerLane">
+              <MappingFragment StoreEntitySet="FourKites_CustomerLane">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerLane" ColumnName="CustomerLane" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="PickLocation" ColumnName="PickLocation" />
+                <ScalarProperty Name="DelLocation" ColumnName="DelLocation" />
+                <ScalarProperty Name="TimeMin" ColumnName="TimeMin" />
+                <ScalarProperty Name="TimeMax" ColumnName="TimeMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FourKites_GPS_Sequencer">
+            <EntityTypeMapping TypeName="Model.FourKites_GPS_Sequencer">
+              <MappingFragment StoreEntitySet="FourKites_GPS_Sequencer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerLaneId" ColumnName="CustomerLaneId" />
+                <ScalarProperty Name="CustomerLane" ColumnName="CustomerLane" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="TimeOffset" ColumnName="TimeOffset" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FourKitesTrackingPendingLegs">
+            <EntityTypeMapping TypeName="Model.FourKitesTrackingPendingLeg">
+              <MappingFragment StoreEntitySet="FourKitesTrackingPendingLegs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="deliver_date" ColumnName="deliver_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="entry_date" ColumnName="entry_date" />
+                <ScalarProperty Name="orignal_probill_number" ColumnName="orignal_probill_number" />
+                <ScalarProperty Name="leg" ColumnName="leg" />
+                <ScalarProperty Name="bol_number" ColumnName="bol_number" />
+                <ScalarProperty Name="billing_group" ColumnName="billing_group" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="orignal_trip_number" ColumnName="orignal_trip_number" />
+                <ScalarProperty Name="orignal_truck_number" ColumnName="orignal_truck_number" />
+                <ScalarProperty Name="orignal_com_type" ColumnName="orignal_com_type" />
+                <ScalarProperty Name="is_last_leg" ColumnName="is_last_leg" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="assignment_id" ColumnName="assignment_id" />
+                <ScalarProperty Name="assignment_status" ColumnName="assignment_status" />
+                <ScalarProperty Name="assign_probill_number" ColumnName="assign_probill_number" />
+                <ScalarProperty Name="assign_trip_number" ColumnName="assign_trip_number" />
+                <ScalarProperty Name="assign_truck_number" ColumnName="assign_truck_number" />
+                <ScalarProperty Name="assign_com_type" ColumnName="assign_com_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FourkitesTrackingSentLegs">
+            <EntityTypeMapping TypeName="Model.FourkitesTrackingSentLeg">
+              <MappingFragment StoreEntitySet="FourkitesTrackingSentLegs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="probill_number" ColumnName="probill_number" />
+                <ScalarProperty Name="leg" ColumnName="leg" />
+                <ScalarProperty Name="bol_number" ColumnName="bol_number" />
+                <ScalarProperty Name="trip_number" ColumnName="trip_number" />
+                <ScalarProperty Name="truck_number" ColumnName="truck_number" />
+                <ScalarProperty Name="current_status" ColumnName="current_status" />
+                <ScalarProperty Name="entry_time" ColumnName="entry_time" />
+                <ScalarProperty Name="is_brockered" ColumnName="is_brockered" />
+                <ScalarProperty Name="is_last_leg" ColumnName="is_last_leg" />
+                <ScalarProperty Name="has_orignal_probill" ColumnName="has_orignal_probill" />
+                <ScalarProperty Name="orignal_probill" ColumnName="orignal_probill" />
+                <ScalarProperty Name="pickuplocation" ColumnName="pickuplocation" />
+                <ScalarProperty Name="deliveredlocation" ColumnName="deliveredlocation" />
+                <ScalarProperty Name="lane_id" ColumnName="lane_id" />
+                <ScalarProperty Name="pickedup_time" ColumnName="pickedup_time" />
+                <ScalarProperty Name="pingposition" ColumnName="pingposition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackingAssistanceUsers">
+            <EntityTypeMapping TypeName="Model.TrackingAssistanceUser">
+              <MappingFragment StoreEntitySet="TrackingAssistanceUser">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackingBackups">
+            <EntityTypeMapping TypeName="Model.TrackingBackup">
+              <MappingFragment StoreEntitySet="TrackingBackup">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="entrydate" ColumnName="entrydate" />
+                <ScalarProperty Name="probill" ColumnName="probill" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="current_status" ColumnName="current_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
