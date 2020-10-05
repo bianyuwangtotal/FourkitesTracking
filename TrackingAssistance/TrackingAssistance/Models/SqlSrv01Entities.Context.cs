@@ -10,9 +10,10 @@
 namespace TrackingAssistance.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class SqlSrv01Entities : DbContext
     {
         public SqlSrv01Entities()
@@ -32,5 +33,10 @@ namespace TrackingAssistance.Models
         public virtual DbSet<FourkitesTrackingSentLeg> FourkitesTrackingSentLegs { get; set; }
         public virtual DbSet<TrackingAssistanceUser> TrackingAssistanceUsers { get; set; }
         public virtual DbSet<TrackingBackup> TrackingBackups { get; set; }
+
+        internal List<LoadDisplay> getLoadInfo(string bol)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

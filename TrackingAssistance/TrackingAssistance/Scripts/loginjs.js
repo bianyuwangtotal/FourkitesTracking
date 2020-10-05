@@ -41,7 +41,7 @@ $(window, document, undefined).ready(function () {
 
 
 function loginValidation() {
-    console.log('click');
+   
     var input = $('.validate-input .input100');
     var check = true;
 
@@ -65,11 +65,11 @@ function loginValidation() {
    
             success: function (res) {
 
-                if (res["type"] != 6) {
-                    $(".focus-message").empty().addClass('message-validate').html(res["message"]);
+                if (res!= 0) {
+                    $(".focus-message").empty().addClass('message-validate').html("You don't have right to acces this page, please conntact Admin for more information");
 
                 }
-                else { location.href = "/Home/DocRetieval"; }
+                else { location.href = "/Dashboard/Index"; }
             }
 
         });

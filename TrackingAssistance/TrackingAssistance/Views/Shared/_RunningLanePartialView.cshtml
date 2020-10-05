@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<TrackingAssistance.Models.RunningJob>
+
+
+<table id="PingTable" class="table table-bordred table-striped">
+    <thead>
+    <th>Bol Number </th>
+    <th>Lane ID </th>
+    <th>Position </th>
+    </thead>
+    <tbody id="PingTableTbody">
+        @foreach (var item in Model)
+        {
+        
+
+                <tr>
+
+                    <td class="copyContent" data-bolNum="@item.Bol">
+                        @item.Bol
+                    </td>
+                    <td>
+                        @item.Lane
+                    </td>
+                    <td>
+                        @item.position
+                    </td>
+                   
+                </tr>
+
+            
+
+        }
+
+
+
+
+    </tbody>
+</table>

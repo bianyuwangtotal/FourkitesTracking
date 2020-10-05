@@ -20,34 +20,45 @@ namespace TrackingAssistance.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = "Login";
+            
 
             HttpCookie reqCookies = Request.Cookies["loginCookie"];
-            if (reqCookies != null)
+
+            if (reqCookies == null )
             {
                 // already login , go to dashboard directely 
-                return RedirectToAction("index", "home");
+                return View();
+              
             }
-        
-            return View();
 
-         
+            
+
+           return RedirectToAction("index", "Dashboard"); 
+          
+
+
         }
 
+        public ActionResult Logout()
+        {
+            HttpCookie reqCookies = Request.Cookies["loginCookie"];
 
+            if (reqCookies != null)
+            {
+                reqCookies["userName"] = "";
+                reqCookies.Expires = DateTime.Now.AddYears(-1);
+                Request.Cookies.Add(reqCookies);
+                Request.Cookies.Clear();
+            
+            }
+            return RedirectToAction("index");
+
+        }
         public JsonResult Login(string userName, string password)
         {
-            string message= "not allowed";
-            if (Membership.ValidateUser(userName, password) is false)
-            {
-                //- In case username or password is wrong, re-load Login View passing back the model
-                //so the framework can make the "bad" username and pass "sticky"
-
-                message = "not allowed";
-
-            }
-            else {
-
+            int loginStatus = 1;
+            if (Membership.ValidateUser(userName, password) is true)
+            { 
                 if (dbSqlSrv01.isUserHaveRight(userName))
                 { 
                 var domainContext = new PrincipalContext(ContextType.Domain, "totallogistics");
@@ -55,15 +66,14 @@ namespace TrackingAssistance.Controllers
 
                 
                 HttpCookie loginCookie = new HttpCookie("loginCookie");
-                loginCookie["userName"] = currentADUser.DisplayName;
-                loginCookie["userCompany"] = "totallogistics";
+                loginCookie["userName"] = currentADUser.DisplayName;            
                 loginCookie["userType"] = dbSqlSrv01.getUserType(userName).ToString();
-                loginCookie.Expires.AddMinutes(10);
+                loginCookie.Expires= DateTime.Now.AddMinutes(10);
                 Response.Cookies.Add(loginCookie);
-
+                loginStatus = 0;
                 }
             }
-            return Json(message, JsonRequestBehavior.AllowGet);
+            return Json(loginStatus, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,317 @@
+﻿
+@model IEnumerable<TrackingAssistance.Models.RunningJob>
+
+<script src="~/Scripts/jquery.pnotify.js"></script>
+<script src="~/Scripts/chosen.jquery.js"></script>
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<div class="row">
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Run Lane on Load: </h6>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="bolNumber" id="bolNumber"  placeholder="Bill Of Lading (BOL)" aria-label="BOL" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary btn-sm"id="getLoadInfoBtn" type="button">Get Load Informations</button>
+                    </div>
+                   
+                </div>
+                <div class="form-group">
+                    <div class="form-row" style="display: flex; flex-wrap: wrap;">
+                        <label style="width:20%" for="lane" class="form-label font-weight-bold small labelTrip">EST Lane : </label>
+
+                        @Html.DropDownList("laneId", null, "-Please select a ESTLane -", htmlAttributes: new { @class = "form-control col-5 chosen-select", @id = "lane", @name = "lane" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row" style="display: flex; flex-wrap: wrap;">
+                        <label for="trip" class="col-2 small">Start Location :</label>
+                        <div class="col-4"><select id="fromPosition" class="chosen-select"><option>- chose start point -</option></select></div>
+                        <label for="trip" class="col-2 small">End Location :</label>
+                        <div class="col-4"><select id="toPosition" class="chosen-select"><option>- chose end point -</option></select></div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                       <button class="btn btn-info btn-sm" id="applylanebtn"  style="float:right;" > apply lane </button>      </div>
+
+            </div>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Load informations </h6>
+            </div>
+            <div class="card-body">
+                <div class="form-group" id="loadinforbody">
+                </div>
+
+                </div>
+    
+
+            </div>
+        </div>
+  
+
+
+    <div class="col-lg-5 mb-4">
+        <!-- Illustrations -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Lane Running ......<span style="float:right" id="tripStatus" class="badge badge-info"></span></h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="table-responsive">
+
+                        @Html.Partial("_RunningLanePartialView", Model)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+
+
+    
+
+    $(document).ready(function () {
+
+
+        var updateHub = $.connection.updateHub;
+
+
+
+        updateHub.client.updateRunningLaneList = function () {
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '/Dashboard/ApplyLane',
+                success: function (data) {
+                    $('#PingTable').html(data);
+                }
+            });
+
+        };
+
+
+        $.connection.hub.start().done(function () {
+
+            console.log("hub connected");
+        });
+
+
+
+        $('input[type="checkbox"]').click(function () {
+            var actionbol = $(this).attr("name");
+            var str = $(this).attr("id").split("+");
+            var bolNum = str[0];
+            var action = str[1];
+
+
+            if (action == "P") {
+                message = "<span>Picked Up Checked For " + bolNum + "?</span>"
+            } else {
+                message = "<span>Delivered Checked For " + bolNum + "?</span>"
+            }
+
+            $('#actionbol').val(actionbol);
+            $('#action').val(action);
+            $("#actionModal").modal("show");
+
+            $("#message").empty();
+            $("#message").append(message);
+        });
+
+        $('#actionModal').on('hidden.bs.modal', function () {
+            var actionbol = $('#actionbol').val();
+
+            var checkbox = $("input[name='" + actionbol + "']");
+            $('#actionbol').val("");
+            $('#action').val("");
+            checkbox.prop("checked", false);
+
+
+        });
+
+
+
+
+
+
+
+
+
+    })
+
+    $.connection.hub.disconnected(function () {
+        setTimeout(function () {
+            $.connection.hub.start();
+        }, 1000); // Restart connection after 5 seconds.
+    });
+
+
+
+    $(".chosen-select").chosen();
+
+    function alertNotify(tital, message, type) {
+
+        $.pnotify({
+            pnotify_title: tital,
+            pnotify_text: message,
+            pnotify_type: type,
+            pnotify_opacity: 1,
+            opacity: 0.90,
+            hide: true,
+            delay: 1000,
+            width: "600px",
+            before_open: function (pnotify) {
+                pnotify.css({
+                    "top": "-50px",
+                    "left": "0px"
+                });
+            }
+
+        });
+    }
+
+
+    $("#lane").on('change', function () {
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/getTotalPings/",
+            data: { laneId: $("#lane").val() },
+            contentType: "application/json",
+            dataType: "json",
+            success: function (pings) {
+                $("#fromPosition").empty();
+                $("#toPosition").empty();
+
+                var obj = JSON.parse(pings);
+
+                console.log(obj.length);
+                for (var i = 1; i <= obj.length; i++) {
+                    $("#fromPosition").append("<option value=" + obj[i-1].Sequence + ">" + obj[i-1].Sequence + " - " + obj[i-1].city+ "</option>").trigger("chosen:updated");
+                    $("#toPosition").append("<option value=" + obj[i - 1].Sequence  + ">" + obj[i-1].Sequence + " - " + obj[i-1].city+ "</option>").trigger("chosen:updated");
+
+                }
+                $("#toPosition").val(obj.length).trigger("chosen:updated");
+            }
+
+
+        });
+    });
+
+
+
+
+    $("#fromPosition").on('change', function () {
+        var startP = $("#fromPosition").val();
+
+        for (var i = 1; i <= startP; i++) {
+            $("#toPosition").find('option[value=' + i + ']').prop('disabled', true).trigger("chosen:updated");
+
+        }
+
+
+    });
+
+    $("#applylanebtn").click(function () {
+        var bol = $("#bolNumber").val();
+        var lane = $("#lane").val();
+        var from = $("#fromPosition").val();
+        var to = $("#toPosition").val();
+
+        console.log("bol: " + bol + ", lane : " + lane + " , from :" + from + ", to: " + to);
+        if (bol.length == 0 || lane.length == 0) {
+
+            alertNotify("Warning:", "Please enter a bol number or chose a lane!", "success");
+
+        }
+        else {
+            var url = "/Dashboard/ApplyLaneToBol/";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    "bol": bol,
+                    "lane": lane,
+                    "from": from,
+                    "to":to
+
+
+                },
+
+                success:
+                    function (data) {
+
+
+                    }
+
+            })
+
+
+        }
+    });
+
+
+    $("#getLoadInfoBtn").click(function () {
+        var bol = $("#bolNumber").val();
+    
+        if (bol.length == 0) {
+
+            alertNotify("Warning:", "Please enter a bol number to get load's informations!", "success");
+
+
+        } else
+
+        {
+            $.ajax({
+                type: "GET",
+                url: "/Dashboard/GetLoadInfor/",
+                data: {
+                    bol: bol
+                },
+                contentType: "application/json",
+                dataType: "json",
+                success: function (loadInfo) {
+                    $("#loadinforbody").empty();
+                    var obj = JSON.parse(loadInfo);
+
+                    console.log(obj);
+                    console.log(obj.legs);
+                    console.log(obj.legs.length);
+
+
+                    for (var i = 0; i < obj.legs.length; i++) {
+                        $("#loadinforbody").append(' <div class="form-row">' +
+                            '<div class="col-1"> leg ' + obj.legs[i].LegNum + '. </div>  <label class="col-1 small"> FROM: </label>   <div class="col-3">' + obj.legs[i].PickupCompany + ' </div>       <label class="col-1 small"> TO: </label>     <div class="col-3"> ' + obj.legs[i].DeliveryCompany
+                            + ' </div>  <label class="col-1 small"> EST Lane: </label> <div>' + obj.legs[i].EstLaneNum   +'</div>');
+                
+
+
+                    }
+                  
+                }
+
+
+            });
+
+        }
+    });
+</script>

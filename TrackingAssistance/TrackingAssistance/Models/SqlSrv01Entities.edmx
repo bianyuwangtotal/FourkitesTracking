@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="backupLoads">
           <Key>
             <PropertyRef Name="Id" />
@@ -18,6 +18,7 @@
           <Property Name="lane_id" Type="int" />
           <Property Name="entry_date" Type="datetime" />
           <Property Name="delete_data" Type="datetime" />
+          <Property Name="is_checked" Type="int" />
         </EntityType>
         <EntityType Name="FourKites_CustomerLane">
           <Key>
@@ -94,6 +95,7 @@
           <Property Name="lane_id" Type="int" />
           <Property Name="pickedup_time" Type="datetime" />
           <Property Name="pingposition" Type="int" />
+          <Property Name="is_checked" Type="int" />
         </EntityType>
         <EntityType Name="TrackingAssistanceUser">
           <Key>
@@ -132,8 +134,7 @@ warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not ha
     FROM [dbo].[TrackingBackup] AS [TrackingBackup]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -150,6 +151,7 @@ warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not ha
           <Property Name="lane_id" Type="Int32" />
           <Property Name="entry_date" Type="DateTime" Precision="3" />
           <Property Name="delete_data" Type="DateTime" Precision="3" />
+          <Property Name="is_checked" Type="Int32" />
         </EntityType>
         <EntityType Name="FourKites_CustomerLane">
           <Key>
@@ -226,6 +228,7 @@ warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not ha
           <Property Name="lane_id" Type="Int32" />
           <Property Name="pickedup_time" Type="DateTime" Precision="3" />
           <Property Name="pingposition" Type="Int32" />
+          <Property Name="is_checked" Type="Int32" />
         </EntityType>
         <EntityType Name="TrackingAssistanceUser">
           <Key>
@@ -263,6 +266,7 @@ warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not ha
           <EntitySetMapping Name="backupLoads">
             <EntityTypeMapping TypeName="Model.backupLoad">
               <MappingFragment StoreEntitySet="backupLoads">
+                <ScalarProperty Name="is_checked" ColumnName="is_checked" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="probill_number" ColumnName="probill_number" />
                 <ScalarProperty Name="bol_number" ColumnName="bol_number" />
@@ -333,6 +337,7 @@ warning 6002: The table/view 'TLCmanifest/Tables.dbo.TrackingBackup' does not ha
           <EntitySetMapping Name="FourkitesTrackingSentLegs">
             <EntityTypeMapping TypeName="Model.FourkitesTrackingSentLeg">
               <MappingFragment StoreEntitySet="FourkitesTrackingSentLegs">
+                <ScalarProperty Name="is_checked" ColumnName="is_checked" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />

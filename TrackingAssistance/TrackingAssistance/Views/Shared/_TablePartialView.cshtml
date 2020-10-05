@@ -1,0 +1,271 @@
+﻿
+@model IEnumerable<TrackingAssistance.Models.LoadDisplay>
+
+<script src="~/Scripts/jquery.pnotify.js"> </script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Kraft Loads Table</h4>
+                        <input type="hidden" id="actionbol">
+                        <input type="hidden" id="action">
+                        <p class="card-category">Loads need to check PICKUP status</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                <th>
+                                    Bill Of Lading
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Pick up Time
+                                </th>
+
+                                <th>
+                                    Checked?
+                                </th>
+
+                                </thead>
+                                <tbody id="pickupList">
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Status.Equals("PICKED UP"))
+                                        {
+
+                                    <tr>
+
+                                        <td class="copyContent" data-bolNum="@item.BolNum">
+                                            @item.BolNum
+                                        </td>
+                                        <td>
+                                            @item.Status
+                                        </td>
+                                        <td>
+                                            @item.StatusTime
+                                        </td>
+                                        <td class="text-primary">
+                                            <input class="blockFromChat" name="@item.BolNum" id="@item.BolNum+P" type="checkbox" />
+                                        </td>
+                                    </tr>
+
+                                        }
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                        <p class="card-category"> Delivered Loads </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+
+                                <th>
+                                    Bill Of Lading
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Delivery Time
+                                </th>
+
+                                <th>
+                                    Checked?
+                                </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Status.Equals("DELIVERED"))
+                                        {
+
+                                            <tr>
+
+                                                <td class ="copyContent" data-bol="@item.BolNum">
+                                                    @item.BolNum
+                                                </td>
+                                                <td>
+                                                    @item.Status
+                                                </td>
+                                                <td>
+                                                    @item.StatusTime
+                                                </td>
+                                                <td class="text-primary">
+                                                    <input class="blockFromChat" name="@item.BolNum" id="@item.BolNum+D" type="checkbox" />
+
+                                                </td>
+                                            </tr>
+
+                                        }
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        var updateHub = $.connection.updateHub;
+
+    
+
+     updateHub.client.updateUserList = function () {
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '/Dashboard/index',
+                success: function (data) {
+                    $('#tableBody').html(data);
+                }
+            });
+
+        };
+
+
+        $.connection.hub.start().done(function () {
+
+            console.log("hub connected");
+        });
+
+
+
+        $('input[type="checkbox"]').click(function () {
+            var actionbol = $(this).attr("name");
+            var str = $(this).attr("id").split("+");
+            var bolNum = str[0];
+            var action = str[1];
+
+
+            if (action == "P") {
+                message = "<span>Picked Up Checked For " + bolNum + "?</span>"
+            } else {
+                message = "<span>Delivered Checked For " + bolNum + "?</span>"
+            }
+
+            $('#actionbol').val(actionbol);
+            $('#action').val(action);
+            $("#actionModal").modal("show");
+
+            $("#message").empty();
+            $("#message").append(message);
+        });
+
+        $('#actionModal').on('hidden.bs.modal', function () {
+            var actionbol = $('#actionbol').val();
+
+            var checkbox = $("input[name='" + actionbol + "']");
+            $('#actionbol').val("");
+            $('#action').val("");
+            checkbox.prop("checked", false);
+
+
+        });
+
+
+   
+
+
+
+ 
+
+
+    })
+
+    $.connection.hub.disconnected(function () {
+        setTimeout(function () {
+            $.connection.hub.start();
+        }, 1000); // Restart connection after 5 seconds.
+    });
+
+
+    $('.copyContent').on('click', function () {
+
+        var bolNumber = $(this).data("bol");
+        console.log(bolNumber);
+
+        var range = document.createRange();
+        range.selectNodeContents(this);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+
+        document.execCommand("copy");
+
+    })
+
+   
+
+    function alertNotify(tital, message, type) {
+
+        $.pnotify({
+            pnotify_title: tital,
+            pnotify_text: message,
+            pnotify_type: type,
+            pnotify_opacity: 1,
+            opacity: 0.90,
+            hide: true,
+            delay:1000,
+            width: "600px",
+            before_open: function (pnotify) {
+                pnotify.css({
+                    "top": "-50px",
+                    "left": "0px"
+                });
+            }
+       
+        });
+    }
+
+    function updatecheck() {
+        var bol = $('#actionbol').val();
+        var action = $('#action').val();
+        var url = "/Dashboard/updateCheck/";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                "bol": bol,
+                "action": action
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data == true) {
+                    alertNotify("load check updated", "Start Tracking Probill Number : " + bol + ", Update Will Followed.", "success");
+                    $("#actionModal").modal("hide");
+                }
+
+            }
+        })
+    }
+
+
+
+</script>

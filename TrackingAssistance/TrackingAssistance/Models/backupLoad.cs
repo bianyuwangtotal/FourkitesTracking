@@ -23,5 +23,6 @@ namespace TrackingAssistance.Models
         public Nullable<int> lane_id { get; set; }
         public Nullable<System.DateTime> entry_date { get; set; }
         public Nullable<System.DateTime> delete_data { get; set; }
+        public Nullable<int> is_checked { get; set; }
     }
 }

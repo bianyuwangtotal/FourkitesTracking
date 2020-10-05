@@ -1,3 +1,12 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    HttpCookie reqCookies = Request.Cookies["loginCookie"];
+
+    if (reqCookies != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+   
 }

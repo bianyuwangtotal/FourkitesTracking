@@ -1,27 +1,47 @@
-﻿
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/loginjs.js"></script>
+﻿<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Material Dashboard by Creative Tim
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+   
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/loginjs.js"></script>
+    @Styles.Render("~/Content/css")
+    <hgroup>
+        <h1>Tracking Assistance</h1>
+        <h3>Total Logistics Group</h3>
+    </hgroup>
+    <form class="login100-form validate-form" method="post" onsubmit="return loginValidation()">
+        <div class="group validate-input" data-validate="User name is required">
+            <input class="input100" id="uname" type="text"><span class="highlight"></span><span class="bar"></span>
+            <label>User Name</label>
+        </div>
+        <div class="group validate-input" data-validate="Password is required">
+            <input class="input100" type="password" id="psd"><span class="highlight"></span><span class="bar"></span>
+            <label>Password</label>
+        </div>
+        <div class="contact100-form-checkbox">
+            <span class="focus-message txt1"></span>
+        </div>
+        <button class="button buttonBlue">
+            Login
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+    </form>
 
-<hgroup>
-    <h1>Tracking Assistance</h1>
-    <h3>Total Logistics Group</h3>
-</hgroup>
-<form class="login100-form validate-form" method="post"  onsubmit="return loginValidation()">
-    <div class="group validate-input" data-validate="User name is required">
-        <input  class="input100"  id="uname" type="text"><span class="highlight"></span><span class="bar"></span>
-        <label>User Name</label>
-    </div>
-    <div class="group validate-input" data-validate="Password is required">
-        <input  class="input100"  type="password" id="psd"><span class="highlight"></span><span class="bar"></span>
-        <label>Password</label>
-    </div>
-    <button class="button buttonBlue">
-        Login
-        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-    </button>
-</form>
 
-
+</body>
 
 
 

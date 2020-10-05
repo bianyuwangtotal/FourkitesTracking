@@ -1,0 +1,1144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="A1TransportLTLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="companies">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="aka" Type="varchar" MaxLength="50" />
+          <Property Name="street_number" Type="varchar" MaxLength="20" />
+          <Property Name="street_name" Type="varchar" MaxLength="75" />
+          <Property Name="address_2" Type="varchar" MaxLength="75" />
+          <Property Name="address_3" Type="varchar" MaxLength="75" />
+          <Property Name="city" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="country" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="tel_1" Type="varchar" MaxLength="30" />
+          <Property Name="tel_2" Type="varchar" MaxLength="30" />
+          <Property Name="fax" Type="varchar" MaxLength="30" />
+          <Property Name="website" Type="varchar" MaxLength="75" />
+          <Property Name="office hours" Type="varchar" MaxLength="50" />
+          <Property Name="ship_from" Type="datetime" />
+          <Property Name="ship_to" Type="datetime" />
+          <Property Name="a_r code" Type="varchar" MaxLength="100" />
+          <Property Name="a_p code" Type="varchar" MaxLength="100" />
+          <Property Name="certificate" Type="varchar" MaxLength="30" />
+          <Property Name="bond" Type="varchar" MaxLength="30" />
+          <Property Name="cargo_insurance_co" Type="varchar" MaxLength="100" />
+          <Property Name="cargo_insurance_broker" Type="varchar" MaxLength="100" />
+          <Property Name="cargo_contact" Type="varchar" MaxLength="40" />
+          <Property Name="cargo_phone" Type="varchar" MaxLength="10" />
+          <Property Name="cargo_policy_number" Type="varchar" MaxLength="50" />
+          <Property Name="cargo_coverage" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="liability_insurance_co" Type="varchar" MaxLength="100" />
+          <Property Name="liability_insurance_broker" Type="varchar" MaxLength="100" />
+          <Property Name="liability_contact" Type="varchar" MaxLength="40" />
+          <Property Name="liability_phone" Type="varchar" MaxLength="40" />
+          <Property Name="libility_policy_number" Type="varchar" MaxLength="50" />
+          <Property Name="liability_coverage" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="icc" Type="varchar" MaxLength="40" />
+          <Property Name="carrier_notes" Type="varchar" MaxLength="500" />
+          <Property Name="customer_notes" Type="varchar" MaxLength="500" />
+          <Property Name="shipper_notes" Type="varchar" MaxLength="500" />
+          <Property Name="consignee_notes" Type="varchar" MaxLength="500" />
+          <Property Name="service_notes" Type="varchar" MaxLength="1" />
+          <Property Name="standing_confirmation_notes" Type="varchar" MaxLength="1" />
+          <Property Name="billing_notes" Type="varchar" MaxLength="1" />
+          <Property Name="tariff_discount" Type="numeric" Precision="8" Scale="4" />
+          <Property Name="customer_confirmation_notes" Type="varchar" MaxLength="1" />
+          <Property Name="terminal" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="division" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="postal" Type="varchar" MaxLength="10" />
+          <Property Name="mail_address_1" Type="varchar" MaxLength="75" />
+          <Property Name="mail_address_2" Type="varchar" MaxLength="75" />
+          <Property Name="mail_address_3" Type="varchar" MaxLength="75" />
+          <Property Name="mail_city" Type="varchar" MaxLength="100" />
+          <Property Name="mail_state" Type="varchar" MaxLength="4" />
+          <Property Name="mail_country" Type="char" MaxLength="2" />
+          <Property Name="mail_postal" Type="varchar" MaxLength="10" />
+          <Property Name="payable_notes" Type="varchar" MaxLength="500" />
+          <Property Name="email" Type="varchar" MaxLength="75" />
+          <Property Name="billing_currency" Type="varchar" MaxLength="3" />
+          <Property Name="payable_currency" Type="varchar" MaxLength="3" />
+          <Property Name="comparative_option" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="commodity_rating_option" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="active" Type="char" MaxLength="1" />
+          <Property Name="billing_terms" Type="varchar" MaxLength="30" />
+          <Property Name="customs_broker_notes" Type="varchar" MaxLength="500" />
+          <Property Name="receive_from" Type="datetime" />
+          <Property Name="receive_to" Type="datetime" />
+          <Property Name="customer_exported" Type="char" MaxLength="1" />
+          <Property Name="vendor_exported" Type="char" MaxLength="1" />
+          <Property Name="payable_terms" Type="varchar" MaxLength="30" />
+          <Property Name="postal_prefix" Type="varchar" MaxLength="10" />
+          <Property Name="plus_4_zip_extension" Type="varchar" MaxLength="10" />
+          <Property Name="liability_date" Type="datetime" />
+          <Property Name="cargo_date" Type="datetime" />
+          <Property Name="salesperson" Type="int" />
+          <Property Name="sales_class" Type="int" />
+          <Property Name="sales_notes" Type="varchar" MaxLength="500" />
+          <Property Name="dispatch_pu_zone" Type="int" />
+          <Property Name="dispatch_del_zone" Type="int" />
+          <Property Name="logistics_pu_zone" Type="int" />
+          <Property Name="logisitics_del_zone" Type="int" />
+          <Property Name="billing_group" Type="int" />
+          <Property Name="rating" Type="varchar" MaxLength="30" />
+          <Property Name="edi_billing" Type="varchar" MaxLength="30" />
+          <Property Name="interchange_id" Type="varchar" MaxLength="200" />
+          <Property Name="application_code" Type="varchar" MaxLength="200" />
+          <Property Name="directions_note" Type="varchar" MaxLength="1250" />
+          <Property Name="distance_rating_option" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="trailers_received" Type="char" MaxLength="1" />
+          <Property Name="edi_214" Type="varchar" MaxLength="30" />
+          <Property Name="tariff_system" Type="varchar" MaxLength="30" />
+          <Property Name="print_carrier_address" Type="char" MaxLength="1" />
+          <Property Name="carrier_logo_path" Type="varchar" MaxLength="100" />
+          <Property Name="del_by_appointment" Type="char" MaxLength="1" />
+          <Property Name="pu_by_appointment" Type="char" MaxLength="1" />
+          <Property Name="ar_billing_company" Type="int" />
+          <Property Name="ap_billing_company" Type="int" />
+          <Property Name="edi_204" Type="varchar" MaxLength="10" />
+          <Property Name="edi_990" Type="varchar" MaxLength="10" />
+          <Property Name="edi_204_out_pro_refs_in_order_section" Type="varchar" MaxLength="1" />
+          <Property Name="edi_204_out_limit_to_one_l0_segment" Type="varchar" MaxLength="1" />
+          <Property Name="parent_company_id" Type="int" />
+          <Property Name="edi_210_out_multi_probill_enabled" Type="varchar" MaxLength="1" />
+          <Property Name="edi_204_out_multi_probill_enabled" Type="varchar" MaxLength="1" />
+          <Property Name="latitude" Type="numeric" Precision="10" Scale="6" />
+          <Property Name="longitude" Type="numeric" Precision="10" Scale="6" />
+          <Property Name="comparative_option_carrier" Type="char" MaxLength="1" />
+          <Property Name="commodity_rating_option_carrier" Type="char" MaxLength="1" />
+          <Property Name="distance_rating_option_carrier" Type="varchar" MaxLength="25" />
+          <Property Name="tariff_system_carrier" Type="varchar" MaxLength="25" />
+          <Property Name="customs_filer_code" Type="varchar" MaxLength="6" />
+          <Property Name="user_column_1" Type="varchar" MaxLength="20" />
+          <Property Name="user_column_2" Type="varchar" MaxLength="20" />
+          <Property Name="billing_currency_2" Type="varchar" MaxLength="3" />
+          <Property Name="a_r_code_2" Type="varchar" MaxLength="100" />
+          <Property Name="payable_currency_2" Type="varchar" MaxLength="3" />
+          <Property Name="a_p_code_2" Type="varchar" MaxLength="100" />
+          <Property Name="customer_exported_date" Type="datetime" />
+          <Property Name="vendor_exported_date" Type="datetime" />
+          <Property Name="pod_not_required" Type="varchar" MaxLength="1" />
+          <Property Name="ap_tolerance_amount" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="ap_tolerance_type" Type="varchar" MaxLength="10" />
+          <Property Name="approve_open_payables" Type="char" MaxLength="1" />
+          <Property Name="gl_acct_dimension" Type="varchar" MaxLength="20" />
+          <Property Name="surcharge_individual" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="carrier_surcharge_individual" Type="char" MaxLength="1" />
+          <Property Name="liability_year" Type="varchar" MaxLength="4" />
+          <Property Name="credit_limit" Type="money" />
+          <Property Name="edi_validate_interchange_id" Type="char" MaxLength="1" />
+          <Property Name="tariff_rating_system" Type="int" />
+          <Property Name="carrier_tariff_rating_system" Type="int" />
+          <Property Name="custom_invoice" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="custom_invoice_layout_id" Type="int" />
+          <Property Name="modified_time" Type="datetime" />
+          <Property Name="resend_214_ta_on_stopchange" Type="char" MaxLength="1" />
+          <Property Name="resend_214_ca_on_stopchange" Type="char" MaxLength="1" />
+          <Property Name="owns_trailers" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="imaging_output_printer" Type="varchar" MaxLength="100" />
+          <Property Name="ship_sun" Type="char" MaxLength="1" />
+          <Property Name="ship_sat" Type="char" MaxLength="1" />
+          <Property Name="receive_sun" Type="char" MaxLength="1" />
+          <Property Name="receive_sat" Type="char" MaxLength="1" />
+          <Property Name="send_confirmation_fax" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="send_confirmation_print" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="send_confirmation_email" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="confirmation_fax" Type="varchar" MaxLength="20" />
+          <Property Name="edi_210_adjustment_enabled" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="open_ar_balance" Type="money" />
+          <Property Name="ave_days_to_pay" Type="int" />
+          <Property Name="dso" Type="int" />
+          <Property Name="creditInfoUpateTimeStamp" Type="datetime" />
+          <Property Name="edi_update_addresses" Type="char" MaxLength="1" />
+          <Property Name="warehouse_3pl" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="warehouse_3pl_code" Type="varchar" MaxLength="20" />
+          <Property Name="non_invoiced_total" Type="money" />
+          <Property Name="non_transferred_total" Type="money" />
+          <Property Name="hold_payable_if_no_pod" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tariff_discount_zone_group_id" Type="int" Nullable="false" />
+          <Property Name="invoicing_method" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="batch_inv_freq" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="last_statement_created_for_date" Type="datetime" />
+          <Property Name="next_statement_scheduled_for_date" Type="datetime" />
+          <Property Name="prevent_manual_invoicing" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="suppress_invoice_printing" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fuel_index_rate_date_adj" Type="int" />
+          <Property Name="rating_mileage_program" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="rating_mileage_version" Type="varchar" MaxLength="10" />
+          <Property Name="rating_mileage_calc_method" Type="varchar" MaxLength="30" />
+          <Property Name="rating_mileage_default_route" Type="varchar" MaxLength="20" />
+          <Property Name="auto_advance_percent" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="image_scanned" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="peoplenet_landmark_id" Type="int" />
+          <Property Name="allow_consolidated_210" Type="char" MaxLength="1" />
+          <Property Name="export_charges_per_probill" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="use_bus_grp_as_billto_on_bol" Type="char" MaxLength="1" />
+          <Property Name="export_at_time_of_billing" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="total_and_rates_as_class" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="use_probill_commodity_if_the_same_class" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="carrier_total_and_rates_as_class" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="carrier_use_probill_commodity_if_the_same_class" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="image_entity_id" Type="varchar" MaxLength="50" />
+          <Property Name="qcom_landmark_id" Type="varchar" MaxLength="25" />
+          <Property Name="div_slash_term" Type="varchar" MaxLength="100" />
+          <Property Name="payables_taxable" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="created_datetime" Type="datetime" />
+          <Property Name="credit_exceeded_action" Type="varchar" MaxLength="20" />
+          <Property Name="credit_threshold_percent" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="credit_threshold_amount" Type="money" Nullable="false" />
+          <Property Name="threshold_exceeded_action" Type="varchar" MaxLength="20" />
+          <Property Name="credit_exceeded_reason" Type="varchar" MaxLength="20" />
+          <Property Name="threshold_exceeded_reason" Type="varchar" MaxLength="20" />
+          <Property Name="surcharge_rate_use_tariff_and_custom" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="30" />
+          <Property Name="last_customer_order_date" Type="datetime" />
+          <Property Name="last_credit_check_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="probills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pro_bill_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="order_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="originating_from" Type="varchar" MaxLength="255" />
+          <Property Name="final_destination" Type="varchar" MaxLength="255" />
+          <Property Name="hazardous" Type="char" MaxLength="1" />
+          <Property Name="un_code" Type="varchar" MaxLength="35" />
+          <Property Name="classification" Type="varchar" MaxLength="30" />
+          <Property Name="packing_group" Type="varchar" MaxLength="30" />
+          <Property Name="customs_broker" Type="int" />
+          <Property Name="temperature" Type="varchar" MaxLength="30" />
+          <Property Name="equipment" Type="varchar" MaxLength="30" />
+          <Property Name="container" Type="varchar" MaxLength="30" />
+          <Property Name="notes" Type="varchar" MaxLength="1000" />
+          <Property Name="lbs" Type="numeric" Precision="10" Scale="4" />
+          <Property Name="kgs" Type="numeric" Precision="10" Scale="4" />
+          <Property Name="skids" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="feet" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="cube" Type="numeric" Precision="20" Scale="4" />
+          <Property Name="pick_up" Type="int" />
+          <Property Name="deliver" Type="int" />
+          <Property Name="pick_up_notes" Type="varchar" MaxLength="2000" />
+          <Property Name="delivery_notes" Type="varchar" MaxLength="2000" />
+          <Property Name="pick_up_date" Type="datetime" />
+          <Property Name="delivery_date" Type="datetime" />
+          <Property Name="pick_up_time" Type="datetime" />
+          <Property Name="delivery_time" Type="datetime" />
+          <Property Name="revenue" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="manifest_id" Type="varchar" MaxLength="10" />
+          <Property Name="assignment_id" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="varchar" MaxLength="30" />
+          <Property Name="leg" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="requested_pick_up" Type="int" />
+          <Property Name="requested_delivery" Type="int" />
+          <Property Name="requested_pick_up_date" Type="datetime" />
+          <Property Name="requested_pick_up_time" Type="datetime" />
+          <Property Name="requested_delivery_date" Type="datetime" />
+          <Property Name="requested_delivery_time" Type="datetime" />
+          <Property Name="pieces" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="units" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="cwt" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="ft_board" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="truck_load" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="metric_tonne" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="imperial ton" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="imperial gallon" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="us_gallon" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="litres" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="hours" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="width" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="height" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="length" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="whl_type" Type="varchar" MaxLength="30" />
+          <Property Name="weight_cube" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="terminal" Type="varchar" MaxLength="30" />
+          <Property Name="division" Type="varchar" MaxLength="30" />
+          <Property Name="commodity" Type="varchar" MaxLength="100" />
+          <Property Name="rate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="picked_up_on" Type="datetime" />
+          <Property Name="picked_up_at" Type="datetime" />
+          <Property Name="delivered_on" Type="datetime" />
+          <Property Name="delivered_at" Type="datetime" />
+          <Property Name="percent_of_order" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="percent_of_pro" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="percent_of_assignment" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="trip" Type="varchar" MaxLength="10" />
+          <Property Name="assigned_truck" Type="int" />
+          <Property Name="assigned_trailer" Type="int" />
+          <Property Name="assigned_container" Type="int" />
+          <Property Name="dispatched" Type="char" MaxLength="1" />
+          <Property Name="pro_leg" Type="varchar" MaxLength="30" />
+          <Property Name="to_be_brokered" Type="char" MaxLength="1" />
+          <Property Name="percent_of_trip" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="payroll_percent" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="cancelled" Type="char" MaxLength="1" />
+          <Property Name="history_truck" Type="int" />
+          <Property Name="history_trailer" Type="int" />
+          <Property Name="history_container" Type="int" />
+          <Property Name="date_dispatched" Type="datetime" />
+          <Property Name="time_dispatched" Type="datetime" />
+          <Property Name="user_dispatched" Type="varchar" MaxLength="30" />
+          <Property Name="comm_status" Type="varchar" MaxLength="30" />
+          <Property Name="dispatched_by" Type="varchar" MaxLength="25" />
+          <Property Name="dispatched_date" Type="datetime" />
+          <Property Name="dispatched_time" Type="datetime" />
+          <Property Name="bill_of_lading" Type="varchar" MaxLength="100" />
+          <Property Name="location" Type="int" />
+          <Property Name="location_code" Type="varchar" MaxLength="30" />
+          <Property Name="seats" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="compartment" Type="varchar" MaxLength="30" />
+          <Property Name="preferred_carrier" Type="varchar" MaxLength="100" />
+          <Property Name="delivered_by_3rd" Type="int" />
+          <Property Name="hazmat_shipping_name" Type="varchar" MaxLength="60" />
+          <Property Name="hazmat_erp" Type="varchar" MaxLength="40" />
+          <Property Name="declared_value" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="cod_amount" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="cod_currency" Type="varchar" MaxLength="3" />
+          <Property Name="cod_payable_by" Type="varchar" MaxLength="10" />
+          <Property Name="cod_remit_to" Type="varchar" MaxLength="80" />
+          <Property Name="declared_value_currency" Type="varchar" MaxLength="3" />
+          <Property Name="zero_percent" Type="char" MaxLength="1" />
+          <Property Name="driver" Type="int" />
+          <Property Name="trip_type" Type="int" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="external_id" Type="varchar" MaxLength="100" />
+          <Property Name="commodity_description" Type="varchar" MaxLength="255" />
+          <Property Name="truck_class" Type="varchar" MaxLength="200" />
+          <Property Name="trailer_class" Type="varchar" MaxLength="200" />
+          <Property Name="pending_reason_code" Type="varchar" MaxLength="20" />
+          <Property Name="external_id_sender" Type="varchar" MaxLength="15" />
+          <Property Name="shipped_from" Type="int" />
+          <Property Name="shipped_to" Type="int" />
+          <Property Name="shipped_from_date" Type="datetime" />
+          <Property Name="shipped_to_date" Type="datetime" />
+          <Property Name="excess_amount" Type="money" />
+          <Property Name="locked" Type="char" MaxLength="1" />
+          <Property Name="locked_by" Type="varchar" MaxLength="30" />
+          <Property Name="locked_on" Type="datetime" />
+          <Property Name="user_column_1" Type="varchar" MaxLength="20" />
+          <Property Name="user_column_2" Type="varchar" MaxLength="20" />
+          <Property Name="default_percent_of_order" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="default_percent_of_probill" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="last_leg" Type="char" MaxLength="1" />
+          <Property Name="fda" Type="char" MaxLength="1" />
+          <Property Name="pieces_uom" Type="varchar" MaxLength="10" />
+          <Property Name="ace_status" Type="varchar" MaxLength="30" />
+          <Property Name="ace_message" Type="int" />
+          <Property Name="estimated_cost" Type="money" />
+          <Property Name="on_hold" Type="char" MaxLength="1" />
+          <Property Name="cancel_notes_id" Type="int" />
+          <Property Name="default_percent_of_leg" Type="numeric" Precision="10" Scale="9" />
+          <Property Name="image_scanned" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="haz_subclass_1" Type="varchar" MaxLength="10" />
+          <Property Name="haz_subclass_2" Type="varchar" MaxLength="10" />
+          <Property Name="haz_subclass_3" Type="varchar" MaxLength="10" />
+          <Property Name="haz_nos_applicable" Type="char" MaxLength="1" />
+          <Property Name="haz_technical_name" Type="varchar" MaxLength="60" />
+          <Property Name="haz_emergency_contact" Type="int" />
+          <Property Name="erap_contact_number" Type="varchar" MaxLength="20" />
+          <Property Name="commodity_owner" Type="int" />
+          <Property Name="load_opt_batch_id" Type="int" />
+          <Property Name="temp_control" Type="varchar" MaxLength="30" />
+          <Property Name="modified_time" Type="datetime" />
+          <Property Name="consolidation_no" Type="varchar" MaxLength="40" />
+          <Property Name="dedicated_leg_value" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="waiting_for_pod" Type="char" MaxLength="1" />
+          <Property Name="revenue_leg" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="revenue_pro" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="expense_pro" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="expense_leg" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="cost_expense_leg" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="cost_leg" Type="numeric" Precision="18" Scale="9" />
+          <Property Name="original_req_pickup_date" Type="datetime" />
+          <Property Name="original_req_pickup_time" Type="datetime" />
+          <Property Name="original_req_delivery_date" Type="datetime" />
+          <Property Name="original_req_delivery_time" Type="datetime" />
+          <Property Name="load_posted" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="aci_status" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="aci_message" Type="int" />
+          <Property Name="image_entity_id" Type="varchar" MaxLength="50" />
+          <Property Name="commodity_po_number" Type="varchar" MaxLength="30" />
+          <Property Name="revenue_distribution_notes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="A1TransportLTLModelStoreContainer">
+          <EntitySet Name="companies" EntityType="Self.companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="probills" EntityType="Self.probills" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="A1TransportLTLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="street_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="street_name" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="address_2" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="address_3" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tel_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tel_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="office_hours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ship_from" Type="DateTime" Precision="3" />
+          <Property Name="ship_to" Type="DateTime" Precision="3" />
+          <Property Name="a_r_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="a_p_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="certificate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="bond" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_insurance_co" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_insurance_broker" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_contact" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_policy_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_coverage" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="liability_insurance_co" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="liability_insurance_broker" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="liability_contact" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="liability_phone" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="libility_policy_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="liability_coverage" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="icc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="carrier_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="customer_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="shipper_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="consignee_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="service_notes" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="standing_confirmation_notes" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="billing_notes" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="tariff_discount" Type="Decimal" Precision="8" Scale="4" />
+          <Property Name="customer_confirmation_notes" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="terminal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="division" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mail_address_1" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="mail_address_2" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="mail_address_3" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="mail_city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mail_state" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="mail_country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="mail_postal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="payable_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="billing_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="payable_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="comparative_option" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="commodity_rating_option" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="billing_terms" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="customs_broker_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="receive_from" Type="DateTime" Precision="3" />
+          <Property Name="receive_to" Type="DateTime" Precision="3" />
+          <Property Name="customer_exported" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="vendor_exported" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="payable_terms" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="postal_prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="plus_4_zip_extension" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="liability_date" Type="DateTime" Precision="3" />
+          <Property Name="cargo_date" Type="DateTime" Precision="3" />
+          <Property Name="salesperson" Type="Int32" />
+          <Property Name="sales_class" Type="Int32" />
+          <Property Name="sales_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="dispatch_pu_zone" Type="Int32" />
+          <Property Name="dispatch_del_zone" Type="Int32" />
+          <Property Name="logistics_pu_zone" Type="Int32" />
+          <Property Name="logisitics_del_zone" Type="Int32" />
+          <Property Name="billing_group" Type="Int32" />
+          <Property Name="rating" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="edi_billing" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="interchange_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="application_code" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="directions_note" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" />
+          <Property Name="distance_rating_option" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trailers_received" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="edi_214" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tariff_system" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="print_carrier_address" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="carrier_logo_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="del_by_appointment" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pu_by_appointment" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ar_billing_company" Type="Int32" />
+          <Property Name="ap_billing_company" Type="Int32" />
+          <Property Name="edi_204" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="edi_990" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="edi_204_out_pro_refs_in_order_section" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="edi_204_out_limit_to_one_l0_segment" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="parent_company_id" Type="Int32" />
+          <Property Name="edi_210_out_multi_probill_enabled" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="edi_204_out_multi_probill_enabled" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="longitude" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="comparative_option_carrier" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="commodity_rating_option_carrier" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="distance_rating_option_carrier" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="tariff_system_carrier" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="customs_filer_code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="user_column_1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_column_2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="billing_currency_2" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="a_r_code_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="payable_currency_2" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="a_p_code_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="customer_exported_date" Type="DateTime" Precision="3" />
+          <Property Name="vendor_exported_date" Type="DateTime" Precision="3" />
+          <Property Name="pod_not_required" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ap_tolerance_amount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ap_tolerance_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="approve_open_payables" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="gl_acct_dimension" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="surcharge_individual" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="carrier_surcharge_individual" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="liability_year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="credit_limit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="edi_validate_interchange_id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tariff_rating_system" Type="Int32" />
+          <Property Name="carrier_tariff_rating_system" Type="Int32" />
+          <Property Name="custom_invoice" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="custom_invoice_layout_id" Type="Int32" />
+          <Property Name="modified_time" Type="DateTime" Precision="3" />
+          <Property Name="resend_214_ta_on_stopchange" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="resend_214_ca_on_stopchange" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="owns_trailers" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="imaging_output_printer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ship_sun" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ship_sat" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="receive_sun" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="receive_sat" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="send_confirmation_fax" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="send_confirmation_print" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="send_confirmation_email" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="confirmation_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="edi_210_adjustment_enabled" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="open_ar_balance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ave_days_to_pay" Type="Int32" />
+          <Property Name="dso" Type="Int32" />
+          <Property Name="creditInfoUpateTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="edi_update_addresses" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="warehouse_3pl" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="warehouse_3pl_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="non_invoiced_total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="non_transferred_total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="hold_payable_if_no_pod" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tariff_discount_zone_group_id" Type="Int32" Nullable="false" />
+          <Property Name="invoicing_method" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="batch_inv_freq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_statement_created_for_date" Type="DateTime" Precision="3" />
+          <Property Name="next_statement_scheduled_for_date" Type="DateTime" Precision="3" />
+          <Property Name="prevent_manual_invoicing" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="suppress_invoice_printing" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="fuel_index_rate_date_adj" Type="Int32" />
+          <Property Name="rating_mileage_program" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rating_mileage_version" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="rating_mileage_calc_method" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="rating_mileage_default_route" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="auto_advance_percent" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="image_scanned" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="peoplenet_landmark_id" Type="Int32" />
+          <Property Name="allow_consolidated_210" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="export_charges_per_probill" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="use_bus_grp_as_billto_on_bol" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="export_at_time_of_billing" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="total_and_rates_as_class" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="use_probill_commodity_if_the_same_class" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="carrier_total_and_rates_as_class" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="carrier_use_probill_commodity_if_the_same_class" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="image_entity_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qcom_landmark_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="div_slash_term" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="payables_taxable" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_datetime" Type="DateTime" Precision="3" />
+          <Property Name="credit_exceeded_action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="credit_threshold_percent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="credit_threshold_amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="threshold_exceeded_action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="credit_exceeded_reason" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="threshold_exceeded_reason" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="surcharge_rate_use_tariff_and_custom" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="created_by" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="last_customer_order_date" Type="DateTime" Precision="3" />
+          <Property Name="last_credit_check_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="probill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pro_bill_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="order_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="originating_from" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="final_destination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="hazardous" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="un_code" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="classification" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="packing_group" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="customs_broker" Type="Int32" />
+          <Property Name="temperature" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="equipment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="container" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="lbs" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="kgs" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="skids" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="feet" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cube" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="pick_up" Type="Int32" />
+          <Property Name="deliver" Type="Int32" />
+          <Property Name="pick_up_notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="delivery_notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="pick_up_date" Type="DateTime" Precision="3" />
+          <Property Name="delivery_date" Type="DateTime" Precision="3" />
+          <Property Name="pick_up_time" Type="DateTime" Precision="3" />
+          <Property Name="delivery_time" Type="DateTime" Precision="3" />
+          <Property Name="revenue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="manifest_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="assignment_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="leg" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="requested_pick_up" Type="Int32" />
+          <Property Name="requested_delivery" Type="Int32" />
+          <Property Name="requested_pick_up_date" Type="DateTime" Precision="3" />
+          <Property Name="requested_pick_up_time" Type="DateTime" Precision="3" />
+          <Property Name="requested_delivery_date" Type="DateTime" Precision="3" />
+          <Property Name="requested_delivery_time" Type="DateTime" Precision="3" />
+          <Property Name="pieces" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="units" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="cwt" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="ft_board" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="truck_load" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="metric_tonne" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="imperial_ton" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="imperial_gallon" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="us_gallon" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="litres" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="hours" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="width" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="height" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="length" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="whl_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="weight_cube" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="terminal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="division" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="commodity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="picked_up_on" Type="DateTime" Precision="3" />
+          <Property Name="picked_up_at" Type="DateTime" Precision="3" />
+          <Property Name="delivered_on" Type="DateTime" Precision="3" />
+          <Property Name="delivered_at" Type="DateTime" Precision="3" />
+          <Property Name="percent_of_order" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="percent_of_pro" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="percent_of_assignment" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="trip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="assigned_truck" Type="Int32" />
+          <Property Name="assigned_trailer" Type="Int32" />
+          <Property Name="assigned_container" Type="Int32" />
+          <Property Name="dispatched" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pro_leg" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="to_be_brokered" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="percent_of_trip" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="payroll_percent" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="cancelled" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="history_truck" Type="Int32" />
+          <Property Name="history_trailer" Type="Int32" />
+          <Property Name="history_container" Type="Int32" />
+          <Property Name="date_dispatched" Type="DateTime" Precision="3" />
+          <Property Name="time_dispatched" Type="DateTime" Precision="3" />
+          <Property Name="user_dispatched" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="comm_status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="dispatched_by" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dispatched_date" Type="DateTime" Precision="3" />
+          <Property Name="dispatched_time" Type="DateTime" Precision="3" />
+          <Property Name="bill_of_lading" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="Int32" />
+          <Property Name="location_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="seats" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="compartment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="preferred_carrier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="delivered_by_3rd" Type="Int32" />
+          <Property Name="hazmat_shipping_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="hazmat_erp" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="declared_value" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cod_amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cod_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="cod_payable_by" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cod_remit_to" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="declared_value_currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="zero_percent" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="driver" Type="Int32" />
+          <Property Name="trip_type" Type="Int32" />
+          <Property Name="start_time" Type="DateTime" Precision="3" />
+          <Property Name="external_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="commodity_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="truck_class" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="trailer_class" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="pending_reason_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="external_id_sender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="shipped_from" Type="Int32" />
+          <Property Name="shipped_to" Type="Int32" />
+          <Property Name="shipped_from_date" Type="DateTime" Precision="3" />
+          <Property Name="shipped_to_date" Type="DateTime" Precision="3" />
+          <Property Name="excess_amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="locked" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="locked_by" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="locked_on" Type="DateTime" Precision="3" />
+          <Property Name="user_column_1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="user_column_2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="default_percent_of_order" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="default_percent_of_probill" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="last_leg" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fda" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="pieces_uom" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ace_status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ace_message" Type="Int32" />
+          <Property Name="estimated_cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="on_hold" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cancel_notes_id" Type="Int32" />
+          <Property Name="default_percent_of_leg" Type="Decimal" Precision="10" Scale="9" />
+          <Property Name="image_scanned" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="haz_subclass_1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="haz_subclass_2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="haz_subclass_3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="haz_nos_applicable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="haz_technical_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="haz_emergency_contact" Type="Int32" />
+          <Property Name="erap_contact_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="commodity_owner" Type="Int32" />
+          <Property Name="load_opt_batch_id" Type="Int32" />
+          <Property Name="temp_control" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="modified_time" Type="DateTime" Precision="3" />
+          <Property Name="consolidation_no" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="dedicated_leg_value" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="waiting_for_pod" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="revenue_leg" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="revenue_pro" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="expense_pro" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="expense_leg" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="cost_expense_leg" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="cost_leg" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="original_req_pickup_date" Type="DateTime" Precision="3" />
+          <Property Name="original_req_pickup_time" Type="DateTime" Precision="3" />
+          <Property Name="original_req_delivery_date" Type="DateTime" Precision="3" />
+          <Property Name="original_req_delivery_time" Type="DateTime" Precision="3" />
+          <Property Name="load_posted" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="aci_status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aci_message" Type="Int32" />
+          <Property Name="image_entity_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="commodity_po_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="revenue_distribution_notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Sql4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="probills" EntityType="Self.probill" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="A1TransportLTLModelStoreContainer" CdmEntityContainer="Sql4Entities">
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="A1TransportLTLModel.company">
+              <MappingFragment StoreEntitySet="companies">
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="aka" ColumnName="aka" />
+                <ScalarProperty Name="street_number" ColumnName="street_number" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="address_2" ColumnName="address_2" />
+                <ScalarProperty Name="address_3" ColumnName="address_3" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="tel_1" ColumnName="tel_1" />
+                <ScalarProperty Name="tel_2" ColumnName="tel_2" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="office_hours" ColumnName="office hours" />
+                <ScalarProperty Name="ship_from" ColumnName="ship_from" />
+                <ScalarProperty Name="ship_to" ColumnName="ship_to" />
+                <ScalarProperty Name="a_r_code" ColumnName="a_r code" />
+                <ScalarProperty Name="a_p_code" ColumnName="a_p code" />
+                <ScalarProperty Name="certificate" ColumnName="certificate" />
+                <ScalarProperty Name="bond" ColumnName="bond" />
+                <ScalarProperty Name="cargo_insurance_co" ColumnName="cargo_insurance_co" />
+                <ScalarProperty Name="cargo_insurance_broker" ColumnName="cargo_insurance_broker" />
+                <ScalarProperty Name="cargo_contact" ColumnName="cargo_contact" />
+                <ScalarProperty Name="cargo_phone" ColumnName="cargo_phone" />
+                <ScalarProperty Name="cargo_policy_number" ColumnName="cargo_policy_number" />
+                <ScalarProperty Name="cargo_coverage" ColumnName="cargo_coverage" />
+                <ScalarProperty Name="liability_insurance_co" ColumnName="liability_insurance_co" />
+                <ScalarProperty Name="liability_insurance_broker" ColumnName="liability_insurance_broker" />
+                <ScalarProperty Name="liability_contact" ColumnName="liability_contact" />
+                <ScalarProperty Name="liability_phone" ColumnName="liability_phone" />
+                <ScalarProperty Name="libility_policy_number" ColumnName="libility_policy_number" />
+                <ScalarProperty Name="liability_coverage" ColumnName="liability_coverage" />
+                <ScalarProperty Name="icc" ColumnName="icc" />
+                <ScalarProperty Name="carrier_notes" ColumnName="carrier_notes" />
+                <ScalarProperty Name="customer_notes" ColumnName="customer_notes" />
+                <ScalarProperty Name="shipper_notes" ColumnName="shipper_notes" />
+                <ScalarProperty Name="consignee_notes" ColumnName="consignee_notes" />
+                <ScalarProperty Name="service_notes" ColumnName="service_notes" />
+                <ScalarProperty Name="standing_confirmation_notes" ColumnName="standing_confirmation_notes" />
+                <ScalarProperty Name="billing_notes" ColumnName="billing_notes" />
+                <ScalarProperty Name="tariff_discount" ColumnName="tariff_discount" />
+                <ScalarProperty Name="customer_confirmation_notes" ColumnName="customer_confirmation_notes" />
+                <ScalarProperty Name="terminal" ColumnName="terminal" />
+                <ScalarProperty Name="division" ColumnName="division" />
+                <ScalarProperty Name="postal" ColumnName="postal" />
+                <ScalarProperty Name="mail_address_1" ColumnName="mail_address_1" />
+                <ScalarProperty Name="mail_address_2" ColumnName="mail_address_2" />
+                <ScalarProperty Name="mail_address_3" ColumnName="mail_address_3" />
+                <ScalarProperty Name="mail_city" ColumnName="mail_city" />
+                <ScalarProperty Name="mail_state" ColumnName="mail_state" />
+                <ScalarProperty Name="mail_country" ColumnName="mail_country" />
+                <ScalarProperty Name="mail_postal" ColumnName="mail_postal" />
+                <ScalarProperty Name="payable_notes" ColumnName="payable_notes" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="billing_currency" ColumnName="billing_currency" />
+                <ScalarProperty Name="payable_currency" ColumnName="payable_currency" />
+                <ScalarProperty Name="comparative_option" ColumnName="comparative_option" />
+                <ScalarProperty Name="commodity_rating_option" ColumnName="commodity_rating_option" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="billing_terms" ColumnName="billing_terms" />
+                <ScalarProperty Name="customs_broker_notes" ColumnName="customs_broker_notes" />
+                <ScalarProperty Name="receive_from" ColumnName="receive_from" />
+                <ScalarProperty Name="receive_to" ColumnName="receive_to" />
+                <ScalarProperty Name="customer_exported" ColumnName="customer_exported" />
+                <ScalarProperty Name="vendor_exported" ColumnName="vendor_exported" />
+                <ScalarProperty Name="payable_terms" ColumnName="payable_terms" />
+                <ScalarProperty Name="postal_prefix" ColumnName="postal_prefix" />
+                <ScalarProperty Name="plus_4_zip_extension" ColumnName="plus_4_zip_extension" />
+                <ScalarProperty Name="liability_date" ColumnName="liability_date" />
+                <ScalarProperty Name="cargo_date" ColumnName="cargo_date" />
+                <ScalarProperty Name="salesperson" ColumnName="salesperson" />
+                <ScalarProperty Name="sales_class" ColumnName="sales_class" />
+                <ScalarProperty Name="sales_notes" ColumnName="sales_notes" />
+                <ScalarProperty Name="dispatch_pu_zone" ColumnName="dispatch_pu_zone" />
+                <ScalarProperty Name="dispatch_del_zone" ColumnName="dispatch_del_zone" />
+                <ScalarProperty Name="logistics_pu_zone" ColumnName="logistics_pu_zone" />
+                <ScalarProperty Name="logisitics_del_zone" ColumnName="logisitics_del_zone" />
+                <ScalarProperty Name="billing_group" ColumnName="billing_group" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="edi_billing" ColumnName="edi_billing" />
+                <ScalarProperty Name="interchange_id" ColumnName="interchange_id" />
+                <ScalarProperty Name="application_code" ColumnName="application_code" />
+                <ScalarProperty Name="directions_note" ColumnName="directions_note" />
+                <ScalarProperty Name="distance_rating_option" ColumnName="distance_rating_option" />
+                <ScalarProperty Name="trailers_received" ColumnName="trailers_received" />
+                <ScalarProperty Name="edi_214" ColumnName="edi_214" />
+                <ScalarProperty Name="tariff_system" ColumnName="tariff_system" />
+                <ScalarProperty Name="print_carrier_address" ColumnName="print_carrier_address" />
+                <ScalarProperty Name="carrier_logo_path" ColumnName="carrier_logo_path" />
+                <ScalarProperty Name="del_by_appointment" ColumnName="del_by_appointment" />
+                <ScalarProperty Name="pu_by_appointment" ColumnName="pu_by_appointment" />
+                <ScalarProperty Name="ar_billing_company" ColumnName="ar_billing_company" />
+                <ScalarProperty Name="ap_billing_company" ColumnName="ap_billing_company" />
+                <ScalarProperty Name="edi_204" ColumnName="edi_204" />
+                <ScalarProperty Name="edi_990" ColumnName="edi_990" />
+                <ScalarProperty Name="edi_204_out_pro_refs_in_order_section" ColumnName="edi_204_out_pro_refs_in_order_section" />
+                <ScalarProperty Name="edi_204_out_limit_to_one_l0_segment" ColumnName="edi_204_out_limit_to_one_l0_segment" />
+                <ScalarProperty Name="parent_company_id" ColumnName="parent_company_id" />
+                <ScalarProperty Name="edi_210_out_multi_probill_enabled" ColumnName="edi_210_out_multi_probill_enabled" />
+                <ScalarProperty Name="edi_204_out_multi_probill_enabled" ColumnName="edi_204_out_multi_probill_enabled" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="comparative_option_carrier" ColumnName="comparative_option_carrier" />
+                <ScalarProperty Name="commodity_rating_option_carrier" ColumnName="commodity_rating_option_carrier" />
+                <ScalarProperty Name="distance_rating_option_carrier" ColumnName="distance_rating_option_carrier" />
+                <ScalarProperty Name="tariff_system_carrier" ColumnName="tariff_system_carrier" />
+                <ScalarProperty Name="customs_filer_code" ColumnName="customs_filer_code" />
+                <ScalarProperty Name="user_column_1" ColumnName="user_column_1" />
+                <ScalarProperty Name="user_column_2" ColumnName="user_column_2" />
+                <ScalarProperty Name="billing_currency_2" ColumnName="billing_currency_2" />
+                <ScalarProperty Name="a_r_code_2" ColumnName="a_r_code_2" />
+                <ScalarProperty Name="payable_currency_2" ColumnName="payable_currency_2" />
+                <ScalarProperty Name="a_p_code_2" ColumnName="a_p_code_2" />
+                <ScalarProperty Name="customer_exported_date" ColumnName="customer_exported_date" />
+                <ScalarProperty Name="vendor_exported_date" ColumnName="vendor_exported_date" />
+                <ScalarProperty Name="pod_not_required" ColumnName="pod_not_required" />
+                <ScalarProperty Name="ap_tolerance_amount" ColumnName="ap_tolerance_amount" />
+                <ScalarProperty Name="ap_tolerance_type" ColumnName="ap_tolerance_type" />
+                <ScalarProperty Name="approve_open_payables" ColumnName="approve_open_payables" />
+                <ScalarProperty Name="gl_acct_dimension" ColumnName="gl_acct_dimension" />
+                <ScalarProperty Name="surcharge_individual" ColumnName="surcharge_individual" />
+                <ScalarProperty Name="carrier_surcharge_individual" ColumnName="carrier_surcharge_individual" />
+                <ScalarProperty Name="liability_year" ColumnName="liability_year" />
+                <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+                <ScalarProperty Name="edi_validate_interchange_id" ColumnName="edi_validate_interchange_id" />
+                <ScalarProperty Name="tariff_rating_system" ColumnName="tariff_rating_system" />
+                <ScalarProperty Name="carrier_tariff_rating_system" ColumnName="carrier_tariff_rating_system" />
+                <ScalarProperty Name="custom_invoice" ColumnName="custom_invoice" />
+                <ScalarProperty Name="custom_invoice_layout_id" ColumnName="custom_invoice_layout_id" />
+                <ScalarProperty Name="modified_time" ColumnName="modified_time" />
+                <ScalarProperty Name="resend_214_ta_on_stopchange" ColumnName="resend_214_ta_on_stopchange" />
+                <ScalarProperty Name="resend_214_ca_on_stopchange" ColumnName="resend_214_ca_on_stopchange" />
+                <ScalarProperty Name="owns_trailers" ColumnName="owns_trailers" />
+                <ScalarProperty Name="imaging_output_printer" ColumnName="imaging_output_printer" />
+                <ScalarProperty Name="ship_sun" ColumnName="ship_sun" />
+                <ScalarProperty Name="ship_sat" ColumnName="ship_sat" />
+                <ScalarProperty Name="receive_sun" ColumnName="receive_sun" />
+                <ScalarProperty Name="receive_sat" ColumnName="receive_sat" />
+                <ScalarProperty Name="send_confirmation_fax" ColumnName="send_confirmation_fax" />
+                <ScalarProperty Name="send_confirmation_print" ColumnName="send_confirmation_print" />
+                <ScalarProperty Name="send_confirmation_email" ColumnName="send_confirmation_email" />
+                <ScalarProperty Name="confirmation_fax" ColumnName="confirmation_fax" />
+                <ScalarProperty Name="edi_210_adjustment_enabled" ColumnName="edi_210_adjustment_enabled" />
+                <ScalarProperty Name="open_ar_balance" ColumnName="open_ar_balance" />
+                <ScalarProperty Name="ave_days_to_pay" ColumnName="ave_days_to_pay" />
+                <ScalarProperty Name="dso" ColumnName="dso" />
+                <ScalarProperty Name="creditInfoUpateTimeStamp" ColumnName="creditInfoUpateTimeStamp" />
+                <ScalarProperty Name="edi_update_addresses" ColumnName="edi_update_addresses" />
+                <ScalarProperty Name="warehouse_3pl" ColumnName="warehouse_3pl" />
+                <ScalarProperty Name="warehouse_3pl_code" ColumnName="warehouse_3pl_code" />
+                <ScalarProperty Name="non_invoiced_total" ColumnName="non_invoiced_total" />
+                <ScalarProperty Name="non_transferred_total" ColumnName="non_transferred_total" />
+                <ScalarProperty Name="hold_payable_if_no_pod" ColumnName="hold_payable_if_no_pod" />
+                <ScalarProperty Name="tariff_discount_zone_group_id" ColumnName="tariff_discount_zone_group_id" />
+                <ScalarProperty Name="invoicing_method" ColumnName="invoicing_method" />
+                <ScalarProperty Name="batch_inv_freq" ColumnName="batch_inv_freq" />
+                <ScalarProperty Name="last_statement_created_for_date" ColumnName="last_statement_created_for_date" />
+                <ScalarProperty Name="next_statement_scheduled_for_date" ColumnName="next_statement_scheduled_for_date" />
+                <ScalarProperty Name="prevent_manual_invoicing" ColumnName="prevent_manual_invoicing" />
+                <ScalarProperty Name="suppress_invoice_printing" ColumnName="suppress_invoice_printing" />
+                <ScalarProperty Name="fuel_index_rate_date_adj" ColumnName="fuel_index_rate_date_adj" />
+                <ScalarProperty Name="rating_mileage_program" ColumnName="rating_mileage_program" />
+                <ScalarProperty Name="rating_mileage_version" ColumnName="rating_mileage_version" />
+                <ScalarProperty Name="rating_mileage_calc_method" ColumnName="rating_mileage_calc_method" />
+                <ScalarProperty Name="rating_mileage_default_route" ColumnName="rating_mileage_default_route" />
+                <ScalarProperty Name="auto_advance_percent" ColumnName="auto_advance_percent" />
+                <ScalarProperty Name="image_scanned" ColumnName="image_scanned" />
+                <ScalarProperty Name="peoplenet_landmark_id" ColumnName="peoplenet_landmark_id" />
+                <ScalarProperty Name="allow_consolidated_210" ColumnName="allow_consolidated_210" />
+                <ScalarProperty Name="export_charges_per_probill" ColumnName="export_charges_per_probill" />
+                <ScalarProperty Name="use_bus_grp_as_billto_on_bol" ColumnName="use_bus_grp_as_billto_on_bol" />
+                <ScalarProperty Name="export_at_time_of_billing" ColumnName="export_at_time_of_billing" />
+                <ScalarProperty Name="total_and_rates_as_class" ColumnName="total_and_rates_as_class" />
+                <ScalarProperty Name="use_probill_commodity_if_the_same_class" ColumnName="use_probill_commodity_if_the_same_class" />
+                <ScalarProperty Name="carrier_total_and_rates_as_class" ColumnName="carrier_total_and_rates_as_class" />
+                <ScalarProperty Name="carrier_use_probill_commodity_if_the_same_class" ColumnName="carrier_use_probill_commodity_if_the_same_class" />
+                <ScalarProperty Name="image_entity_id" ColumnName="image_entity_id" />
+                <ScalarProperty Name="qcom_landmark_id" ColumnName="qcom_landmark_id" />
+                <ScalarProperty Name="div_slash_term" ColumnName="div_slash_term" />
+                <ScalarProperty Name="payables_taxable" ColumnName="payables_taxable" />
+                <ScalarProperty Name="created_datetime" ColumnName="created_datetime" />
+                <ScalarProperty Name="credit_exceeded_action" ColumnName="credit_exceeded_action" />
+                <ScalarProperty Name="credit_threshold_percent" ColumnName="credit_threshold_percent" />
+                <ScalarProperty Name="credit_threshold_amount" ColumnName="credit_threshold_amount" />
+                <ScalarProperty Name="threshold_exceeded_action" ColumnName="threshold_exceeded_action" />
+                <ScalarProperty Name="credit_exceeded_reason" ColumnName="credit_exceeded_reason" />
+                <ScalarProperty Name="threshold_exceeded_reason" ColumnName="threshold_exceeded_reason" />
+                <ScalarProperty Name="surcharge_rate_use_tariff_and_custom" ColumnName="surcharge_rate_use_tariff_and_custom" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="last_customer_order_date" ColumnName="last_customer_order_date" />
+                <ScalarProperty Name="last_credit_check_date" ColumnName="last_credit_check_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="probills">
+            <EntityTypeMapping TypeName="A1TransportLTLModel.probill">
+              <MappingFragment StoreEntitySet="probills">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pro_bill_id" ColumnName="pro_bill_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="originating_from" ColumnName="originating_from" />
+                <ScalarProperty Name="final_destination" ColumnName="final_destination" />
+                <ScalarProperty Name="hazardous" ColumnName="hazardous" />
+                <ScalarProperty Name="un_code" ColumnName="un_code" />
+                <ScalarProperty Name="classification" ColumnName="classification" />
+                <ScalarProperty Name="packing_group" ColumnName="packing_group" />
+                <ScalarProperty Name="customs_broker" ColumnName="customs_broker" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="equipment" ColumnName="equipment" />
+                <ScalarProperty Name="container" ColumnName="container" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="lbs" ColumnName="lbs" />
+                <ScalarProperty Name="kgs" ColumnName="kgs" />
+                <ScalarProperty Name="skids" ColumnName="skids" />
+                <ScalarProperty Name="feet" ColumnName="feet" />
+                <ScalarProperty Name="cube" ColumnName="cube" />
+                <ScalarProperty Name="pick_up" ColumnName="pick_up" />
+                <ScalarProperty Name="deliver" ColumnName="deliver" />
+                <ScalarProperty Name="pick_up_notes" ColumnName="pick_up_notes" />
+                <ScalarProperty Name="delivery_notes" ColumnName="delivery_notes" />
+                <ScalarProperty Name="pick_up_date" ColumnName="pick_up_date" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="pick_up_time" ColumnName="pick_up_time" />
+                <ScalarProperty Name="delivery_time" ColumnName="delivery_time" />
+                <ScalarProperty Name="revenue" ColumnName="revenue" />
+                <ScalarProperty Name="manifest_id" ColumnName="manifest_id" />
+                <ScalarProperty Name="assignment_id" ColumnName="assignment_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="leg" ColumnName="leg" />
+                <ScalarProperty Name="requested_pick_up" ColumnName="requested_pick_up" />
+                <ScalarProperty Name="requested_delivery" ColumnName="requested_delivery" />
+                <ScalarProperty Name="requested_pick_up_date" ColumnName="requested_pick_up_date" />
+                <ScalarProperty Name="requested_pick_up_time" ColumnName="requested_pick_up_time" />
+                <ScalarProperty Name="requested_delivery_date" ColumnName="requested_delivery_date" />
+                <ScalarProperty Name="requested_delivery_time" ColumnName="requested_delivery_time" />
+                <ScalarProperty Name="pieces" ColumnName="pieces" />
+                <ScalarProperty Name="units" ColumnName="units" />
+                <ScalarProperty Name="cwt" ColumnName="cwt" />
+                <ScalarProperty Name="ft_board" ColumnName="ft_board" />
+                <ScalarProperty Name="truck_load" ColumnName="truck_load" />
+                <ScalarProperty Name="metric_tonne" ColumnName="metric_tonne" />
+                <ScalarProperty Name="imperial_ton" ColumnName="imperial ton" />
+                <ScalarProperty Name="imperial_gallon" ColumnName="imperial gallon" />
+                <ScalarProperty Name="us_gallon" ColumnName="us_gallon" />
+                <ScalarProperty Name="litres" ColumnName="litres" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="whl_type" ColumnName="whl_type" />
+                <ScalarProperty Name="weight_cube" ColumnName="weight_cube" />
+                <ScalarProperty Name="terminal" ColumnName="terminal" />
+                <ScalarProperty Name="division" ColumnName="division" />
+                <ScalarProperty Name="commodity" ColumnName="commodity" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="picked_up_on" ColumnName="picked_up_on" />
+                <ScalarProperty Name="picked_up_at" ColumnName="picked_up_at" />
+                <ScalarProperty Name="delivered_on" ColumnName="delivered_on" />
+                <ScalarProperty Name="delivered_at" ColumnName="delivered_at" />
+                <ScalarProperty Name="percent_of_order" ColumnName="percent_of_order" />
+                <ScalarProperty Name="percent_of_pro" ColumnName="percent_of_pro" />
+                <ScalarProperty Name="percent_of_assignment" ColumnName="percent_of_assignment" />
+                <ScalarProperty Name="trip" ColumnName="trip" />
+                <ScalarProperty Name="assigned_truck" ColumnName="assigned_truck" />
+                <ScalarProperty Name="assigned_trailer" ColumnName="assigned_trailer" />
+                <ScalarProperty Name="assigned_container" ColumnName="assigned_container" />
+                <ScalarProperty Name="dispatched" ColumnName="dispatched" />
+                <ScalarProperty Name="pro_leg" ColumnName="pro_leg" />
+                <ScalarProperty Name="to_be_brokered" ColumnName="to_be_brokered" />
+                <ScalarProperty Name="percent_of_trip" ColumnName="percent_of_trip" />
+                <ScalarProperty Name="payroll_percent" ColumnName="payroll_percent" />
+                <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+                <ScalarProperty Name="history_truck" ColumnName="history_truck" />
+                <ScalarProperty Name="history_trailer" ColumnName="history_trailer" />
+                <ScalarProperty Name="history_container" ColumnName="history_container" />
+                <ScalarProperty Name="date_dispatched" ColumnName="date_dispatched" />
+                <ScalarProperty Name="time_dispatched" ColumnName="time_dispatched" />
+                <ScalarProperty Name="user_dispatched" ColumnName="user_dispatched" />
+                <ScalarProperty Name="comm_status" ColumnName="comm_status" />
+                <ScalarProperty Name="dispatched_by" ColumnName="dispatched_by" />
+                <ScalarProperty Name="dispatched_date" ColumnName="dispatched_date" />
+                <ScalarProperty Name="dispatched_time" ColumnName="dispatched_time" />
+                <ScalarProperty Name="bill_of_lading" ColumnName="bill_of_lading" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="location_code" ColumnName="location_code" />
+                <ScalarProperty Name="seats" ColumnName="seats" />
+                <ScalarProperty Name="compartment" ColumnName="compartment" />
+                <ScalarProperty Name="preferred_carrier" ColumnName="preferred_carrier" />
+                <ScalarProperty Name="delivered_by_3rd" ColumnName="delivered_by_3rd" />
+                <ScalarProperty Name="hazmat_shipping_name" ColumnName="hazmat_shipping_name" />
+                <ScalarProperty Name="hazmat_erp" ColumnName="hazmat_erp" />
+                <ScalarProperty Name="declared_value" ColumnName="declared_value" />
+                <ScalarProperty Name="cod_amount" ColumnName="cod_amount" />
+                <ScalarProperty Name="cod_currency" ColumnName="cod_currency" />
+                <ScalarProperty Name="cod_payable_by" ColumnName="cod_payable_by" />
+                <ScalarProperty Name="cod_remit_to" ColumnName="cod_remit_to" />
+                <ScalarProperty Name="declared_value_currency" ColumnName="declared_value_currency" />
+                <ScalarProperty Name="zero_percent" ColumnName="zero_percent" />
+                <ScalarProperty Name="driver" ColumnName="driver" />
+                <ScalarProperty Name="trip_type" ColumnName="trip_type" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="external_id" ColumnName="external_id" />
+                <ScalarProperty Name="commodity_description" ColumnName="commodity_description" />
+                <ScalarProperty Name="truck_class" ColumnName="truck_class" />
+                <ScalarProperty Name="trailer_class" ColumnName="trailer_class" />
+                <ScalarProperty Name="pending_reason_code" ColumnName="pending_reason_code" />
+                <ScalarProperty Name="external_id_sender" ColumnName="external_id_sender" />
+                <ScalarProperty Name="shipped_from" ColumnName="shipped_from" />
+                <ScalarProperty Name="shipped_to" ColumnName="shipped_to" />
+                <ScalarProperty Name="shipped_from_date" ColumnName="shipped_from_date" />
+                <ScalarProperty Name="shipped_to_date" ColumnName="shipped_to_date" />
+                <ScalarProperty Name="excess_amount" ColumnName="excess_amount" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="locked_by" ColumnName="locked_by" />
+                <ScalarProperty Name="locked_on" ColumnName="locked_on" />
+                <ScalarProperty Name="user_column_1" ColumnName="user_column_1" />
+                <ScalarProperty Name="user_column_2" ColumnName="user_column_2" />
+                <ScalarProperty Name="default_percent_of_order" ColumnName="default_percent_of_order" />
+                <ScalarProperty Name="default_percent_of_probill" ColumnName="default_percent_of_probill" />
+                <ScalarProperty Name="last_leg" ColumnName="last_leg" />
+                <ScalarProperty Name="fda" ColumnName="fda" />
+                <ScalarProperty Name="pieces_uom" ColumnName="pieces_uom" />
+                <ScalarProperty Name="ace_status" ColumnName="ace_status" />
+                <ScalarProperty Name="ace_message" ColumnName="ace_message" />
+                <ScalarProperty Name="estimated_cost" ColumnName="estimated_cost" />
+                <ScalarProperty Name="on_hold" ColumnName="on_hold" />
+                <ScalarProperty Name="cancel_notes_id" ColumnName="cancel_notes_id" />
+                <ScalarProperty Name="default_percent_of_leg" ColumnName="default_percent_of_leg" />
+                <ScalarProperty Name="image_scanned" ColumnName="image_scanned" />
+                <ScalarProperty Name="haz_subclass_1" ColumnName="haz_subclass_1" />
+                <ScalarProperty Name="haz_subclass_2" ColumnName="haz_subclass_2" />
+                <ScalarProperty Name="haz_subclass_3" ColumnName="haz_subclass_3" />
+                <ScalarProperty Name="haz_nos_applicable" ColumnName="haz_nos_applicable" />
+                <ScalarProperty Name="haz_technical_name" ColumnName="haz_technical_name" />
+                <ScalarProperty Name="haz_emergency_contact" ColumnName="haz_emergency_contact" />
+                <ScalarProperty Name="erap_contact_number" ColumnName="erap_contact_number" />
+                <ScalarProperty Name="commodity_owner" ColumnName="commodity_owner" />
+                <ScalarProperty Name="load_opt_batch_id" ColumnName="load_opt_batch_id" />
+                <ScalarProperty Name="temp_control" ColumnName="temp_control" />
+                <ScalarProperty Name="modified_time" ColumnName="modified_time" />
+                <ScalarProperty Name="consolidation_no" ColumnName="consolidation_no" />
+                <ScalarProperty Name="dedicated_leg_value" ColumnName="dedicated_leg_value" />
+                <ScalarProperty Name="waiting_for_pod" ColumnName="waiting_for_pod" />
+                <ScalarProperty Name="revenue_leg" ColumnName="revenue_leg" />
+                <ScalarProperty Name="revenue_pro" ColumnName="revenue_pro" />
+                <ScalarProperty Name="expense_pro" ColumnName="expense_pro" />
+                <ScalarProperty Name="expense_leg" ColumnName="expense_leg" />
+                <ScalarProperty Name="cost_expense_leg" ColumnName="cost_expense_leg" />
+                <ScalarProperty Name="cost_leg" ColumnName="cost_leg" />
+                <ScalarProperty Name="original_req_pickup_date" ColumnName="original_req_pickup_date" />
+                <ScalarProperty Name="original_req_pickup_time" ColumnName="original_req_pickup_time" />
+                <ScalarProperty Name="original_req_delivery_date" ColumnName="original_req_delivery_date" />
+                <ScalarProperty Name="original_req_delivery_time" ColumnName="original_req_delivery_time" />
+                <ScalarProperty Name="load_posted" ColumnName="load_posted" />
+                <ScalarProperty Name="aci_status" ColumnName="aci_status" />
+                <ScalarProperty Name="aci_message" ColumnName="aci_message" />
+                <ScalarProperty Name="image_entity_id" ColumnName="image_entity_id" />
+                <ScalarProperty Name="commodity_po_number" ColumnName="commodity_po_number" />
+                <ScalarProperty Name="revenue_distribution_notes" ColumnName="revenue_distribution_notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
