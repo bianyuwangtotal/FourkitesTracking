@@ -49,37 +49,46 @@ namespace TrackingAssistance.Controllers
 
         public ActionResult ApplyLane()
         {
-            List<RunningJob> jobs = new List<RunningJob>();
+            HttpCookie reqCookies = Request.Cookies["loginCookie"];
 
-            var allJobKeys = Globals.Globals.scheduler.GetJobKeys(GroupMatcher<JobKey>.AnyGroup()).Result.ToList();
-
-            foreach (var v in allJobKeys)
+            if (reqCookies == null)
             {
-                RunningJob job = new RunningJob();
-                job.Bol = v.Name;
-
-                job.Lane = Globals.Globals.scheduler.GetJobDetail(new JobKey(v.Name, "BolNum")).Result.JobDataMap.GetInt("laneId");
-                job.position = Globals.Globals.scheduler.GetJobDetail( new JobKey(v.Name, "BolNum")).Result.JobDataMap.GetInt("From");
-
-                jobs.Add(job);
+             
+                return RedirectToAction("index", "home");
             }
-
-
-          
-
-            List<FourKites_CustomerLane> laneList = dbSqlSrv01.getLaneList();
-
-
-            ViewBag.laneId = new SelectList(from d in laneList select new{d.id,laneName =d.id +" - "+ d.CustomerLane},"id", "laneName");
-
-            if (Request.IsAjaxRequest())
+            else
             {
-              
-                return PartialView("_RunningLanePartialView", jobs);
+                List<RunningJob> jobs = new List<RunningJob>();
 
+                var allJobKeys = Globals.Globals.scheduler.GetJobKeys(GroupMatcher<JobKey>.AnyGroup()).Result.ToList();
+
+                foreach (var v in allJobKeys)
+                {
+                    RunningJob job = new RunningJob();
+                    job.Bol = v.Name;
+
+                    job.Lane = Globals.Globals.scheduler.GetJobDetail(new JobKey(v.Name, "BolNum")).Result.JobDataMap.GetInt("laneId");
+                    job.position = Globals.Globals.scheduler.GetJobDetail(new JobKey(v.Name, "BolNum")).Result.JobDataMap.GetInt("From")-1;
+
+                    jobs.Add(job);
+                }
+
+
+
+
+                List<FourKites_CustomerLane> laneList = dbSqlSrv01.getLaneList();
+
+
+                ViewBag.laneId = new SelectList(from d in laneList select new { d.id, laneName = d.id + " - " + d.CustomerLane }, "id", "laneName");
+
+                if (Request.IsAjaxRequest())
+                {
+
+                    return PartialView("_RunningLanePartialView", jobs);
+
+                }
+                return View(jobs.ToList());
             }
-            return View(jobs.ToList());
-
         }
 
        

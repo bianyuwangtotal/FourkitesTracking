@@ -11,14 +11,14 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav .navbar-form">
-            <li class="nav-item active">
+            <li class="nav-item kraft active">
                 <a class="nav-link" href="https://app.fourkites.com/dashboard/home" target="_blank">
                     <i class="material-icons">dashboard</i>
                     <p>FourKites</p>
                 </a>
                 <hr />
                 <ul>
-                    <li> <i class="material-icons">location_ons</i><p>Kraft</p></li>
+                    <li> <i class="material-icons">location_ons</i><a class="nav-link" href="/dashboard/index"><p>Kraft</p></a></li>
                     <li> <i class="material-icons">location_ons</i><p>Modelez</p></li>
 
                 </ul>
@@ -26,7 +26,7 @@
                 <hr />
             </li>
 
-            <li class="nav-item ">
+            <li class="nav-item Trimble ">
                 <a class="nav-link" href="https://referencedocuments.readme.io/" target="_blank">
                     <i class="material-icons">dashboard</i>
                     <p>Trimble</p>
@@ -45,7 +45,7 @@
                 HttpCookie reqCookies = Request.Cookies["loginCookie"];
                 if (reqCookies != null && int.Parse(reqCookies["userType"]) == 0)
                 {
-                    <li class="nav-item  ">
+                    <li class="nav-item admin">
                         <a class="nav-link" href="@Url.Action("ApplyLane","Dashboard")">
                             <i class="material-icons">dashboard</i>
                             <p>I don't know..</p>
